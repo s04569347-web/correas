@@ -689,3 +689,10 @@
 .envio-card strong{display:block;font-size:17px}.envio-card small{color:#555;font-size:13px}
 .envio-elegido{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#effaf3;border:1px solid #1d8a4a;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-weight:700;font-size:14px}
 .envio-elegido button{background:none;border:0;color:#1d8a4a;font-weight:800;text-decoration:underline;cursor:pointer;font:inherit}
+
+/* Galería: mostrar la imagen completa (sin recortes) */
+.galeria__slide{aspect-ratio:1/1;min-height:0;background:#fff}
+.galeria__slide img{object-fit:contain}
+.galeria__slide video{object-fit:contain;background:#000}
+@media (min-width:900px){.galeria__slide{aspect-ratio:1/1;min-height:0}}
+.resumen-pedido__producto-img{object-fit:contain;background:#fff}
