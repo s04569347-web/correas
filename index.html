@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+    ⚠️ IMPORTANTE: estas etiquetas (title, description, og:*) son LEÍDAS
+    POR WHATSAPP/FACEBOOK/REDES directamente del HTML estático — esas
+    plataformas no ejecutan JavaScript, así que NO pueden generarse
+    dinámicamente desde config.js. Si cambias PRODUCTO_NOMBRE o la
+    descripción del producto en js/config.js, TIENES QUE actualizar
+    también estas líneas a mano para que coincidan.
+
+    Después de editar, si compartes el link y sigue saliendo la versión
+    vieja, es por caché de WhatsApp/Facebook — fuerza el refresh en:
+    https://developers.facebook.com/tools/debug/ (pega tu URL → "Scrape Again")
+  -->
+  <title>Correas de Elevación para Carga y Mudanza | Pago Contraentrega a Todo el Perú</title>
+  <meta name="description" content="Kit de correas de elevación para 2 personas: mueve refrigeradoras, colchones, sofás y muebles hasta 300 kg. Pago contra entrega, envíos a todo el Perú." />
+
+  <!-- Open Graph (para que se vea bien al compartir en redes / WhatsApp) -->
+  <meta property="og:title" content="Correas de Elevación para Mudanza" />
+  <meta property="og:description" content="Kit completo para 2 personas. Soporta hasta 300 kg. Envío a todo el Perú y pago contra entrega." />
+  <meta property="og:image" content="assets/images/producto-hero-principal.jpg" />
+  <meta property="og:type" content="product" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/checkout-modal.css" />
+  <link rel="stylesheet" href="css/mejoras_landing.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- ===== BARRA DE CONFIANZA (arriba de todo) ===== -->
+  <div class="trust-bar">
+    <div class="trust-bar__item trust-bar__item--destacado">💰 PAGO CONTRA ENTREGA</div>
+    <div class="trust-bar__item">🚚 Envío gratis a todo el Perú</div>
+    <div class="trust-bar__item">🔒 Compra 100% segura</div>
+  </div>
+
+  <!-- ============================================================
+       BARRA SUPERIOR DE CONFIANZA
+       ============================================================ -->
+  <div class="barra-confianza">
+    <div class="barra-confianza__ticker-wrap">
+      <div class="barra-confianza__ticker">
+        <span class="barra-confianza__item">🚚 Envíos rápidos a todo el Perú</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">🛡️ Pago contra entrega</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">✅ Garantía de 6 meses</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">💪 Soporta hasta 300 kg</span>
+        <span class="barra-confianza__sep">•</span>
+        <!-- Duplicado para loop continuo sin saltos -->
+        <span class="barra-confianza__item">🚚 Envíos rápidos a todo el Perú</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">🛡️ Pago contra entrega</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">✅ Garantía de 6 meses</span>
+        <span class="barra-confianza__sep">•</span>
+        <span class="barra-confianza__item">💪 Soporta hasta 300 kg</span>
+        <span class="barra-confianza__sep">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECCIÓN PRODUCTO
+       ============================================================ -->
+  <main class="producto contenedor" id="seccion-producto">
+    <div class="producto__grid">
+
+      <!-- ---------------- GALERÍA ----------------
+           Mobile: carrusel horizontal deslizable (scroll-snap) con dots,
+           pensado para el gesto natural de "swipe" de TikTok/Instagram.
+           Desktop (≥900px): miniaturas verticales + imagen grande,
+           controladas por el mismo JS pero mostrando/ocultando con CSS.
+      -->
+      <section class="galeria" aria-label="Galería de imágenes del producto">
+<div class="galeria__badges"><span class="badge-oferta">🔥 OFERTA POR TIEMPO LIMITADO</span><span class="badge-envio">🚚 ENVÍO A TODO EL PERÚ · PAGO CONTRAENTREGA</span></div>
+<div class="galeria__principal-wrap"><div class="galeria__miniaturas"><button class="miniatura activa" data-indice="0" aria-label="Ver imagen 1"><img src="assets/images/correas-1.jpg" alt="Kit de correas de elevación cargando una caja fuerte" loading="lazy" /></button><button class="miniatura" data-indice="1" aria-label="Ver imagen 2"><img src="assets/images/correas-2.jpg" alt="Kit de correas usado en refrigeradora, lavadora, caja y escalera" loading="lazy" /></button><button class="miniatura" data-indice="2" aria-label="Ver imagen 3"><img src="assets/images/correas-3.jpg" alt="Arnés cruzado en X que reparte el peso en la espalda" loading="lazy" /></button><button class="miniatura" data-indice="3" aria-label="Ver imagen 4"><img src="assets/images/correas-4.jpg" alt="Dos personas mueven una refrigeradora con las correas" loading="lazy" /></button><button class="miniatura" data-indice="4" aria-label="Ver imagen 5"><img src="assets/images/correas-5.jpg" alt="Dos personas levantan un colchón con las correas" loading="lazy" /></button><button class="miniatura" data-indice="5" aria-label="Ver imagen 6"><img src="assets/images/correas-6.jpg" alt="Objetos pesados que puedes mover: refrigeradora, mueble, lavadora, cama" loading="lazy" /></button><button class="miniatura" data-indice="6" aria-label="Ver imagen 7"><img src="assets/images/correas-7.jpg" alt="Evita dolores de espalda, rayones en el piso y esfuerzo" loading="lazy" /></button></div>
+<div class="galeria__carrusel" id="galeria-carrusel">
+<div class="galeria__slide galeria__slide--con-video" data-slide="0" id="slide-con-video">
+<img src="assets/images/correas-1.jpg" alt="Kit de correas de elevación cargando una caja fuerte" id="video-poster-img" />
+<button class="galeria__play" id="btn-play-video" aria-label="Reproducir video del producto">▶</button>
+<video id="video-producto" class="galeria__video" playsinline preload="none" poster="assets/images/correas-1.jpg" style="display:none;"><source src="assets/videos/producto-video.mp4" type="video/mp4" /></video></div>
+<div class="galeria__slide" data-slide="1"><img src="assets/images/correas-2.jpg" alt="Kit de correas usado en refrigeradora, lavadora, caja y escalera" loading="lazy" /></div>
+<div class="galeria__slide" data-slide="2"><img src="assets/images/correas-3.jpg" alt="Arnés cruzado en X que reparte el peso en la espalda" loading="lazy" /></div>
+<div class="galeria__slide" data-slide="3"><img src="assets/images/correas-4.jpg" alt="Dos personas mueven una refrigeradora con las correas" loading="lazy" /></div>
+<div class="galeria__slide" data-slide="4"><img src="assets/images/correas-5.jpg" alt="Dos personas levantan un colchón con las correas" loading="lazy" /></div>
+<div class="galeria__slide" data-slide="5"><img src="assets/images/correas-6.jpg" alt="Objetos pesados que puedes mover: refrigeradora, mueble, lavadora, cama" loading="lazy" /></div>
+<div class="galeria__slide" data-slide="6"><img src="assets/images/correas-7.jpg" alt="Evita dolores de espalda, rayones en el piso y esfuerzo" loading="lazy" /></div>
+</div></div>
+<div class="galeria__dots" id="galeria-dots"><button class="galeria__dot activo" data-indice="0" aria-label="Ir a imagen 1"></button><button class="galeria__dot" data-indice="1" aria-label="Ir a imagen 2"></button><button class="galeria__dot" data-indice="2" aria-label="Ir a imagen 3"></button><button class="galeria__dot" data-indice="3" aria-label="Ir a imagen 4"></button><button class="galeria__dot" data-indice="4" aria-label="Ir a imagen 5"></button><button class="galeria__dot" data-indice="5" aria-label="Ir a imagen 6"></button><button class="galeria__dot" data-indice="6" aria-label="Ir a imagen 7"></button></div>
+<div class="caracteristicas-rapidas"><div class="caracteristica-rapida"><div class="caracteristica-rapida__icono">💪</div><div class="caracteristica-rapida__titulo">300 KG</div><div class="caracteristica-rapida__detalle">Capacidad de carga</div></div><div class="caracteristica-rapida"><div class="caracteristica-rapida__icono">↔️</div><div class="caracteristica-rapida__titulo">4,5 CM</div><div class="caracteristica-rapida__detalle">Ancho de la cinta</div></div><div class="caracteristica-rapida"><div class="caracteristica-rapida__icono">📏</div><div class="caracteristica-rapida__titulo">3 METROS</div><div class="caracteristica-rapida__detalle">Correa auxiliar</div></div><div class="caracteristica-rapida"><div class="caracteristica-rapida__icono">🛡️</div><div class="caracteristica-rapida__titulo">6 MESES</div><div class="caracteristica-rapida__detalle">De garantía</div></div></div>
+</section>
+
+      <!-- ---------------- INFO DE COMPRA ---------------- -->
+      <section class="info-compra" aria-label="Información de compra">
+        <div class="info-compra__viendo">
+          <span class="punto-verde"></span>
+          <span data-personas-viendo>20 personas están viendo este producto</span>
+        </div>
+
+        <h1 class="info-compra__titulo">
+          CORREAS DE ELEVACIÓN PARA CARGA Y MUDANZA
+          <span class="info-compra__verificado">✔️</span>
+        </h1>
+
+        
+
+        <ul class="info-compra__beneficios">
+<li><span class="info-compra__beneficio-icono">👥</span><span><span class="info-compra__beneficio-titulo">Kit completo para 2 personas</span><span class="info-compra__beneficio-sub">Incluye 2 arneses, uno para cada persona</span></span></li>
+<li><span class="info-compra__beneficio-icono">💪</span><span><span class="info-compra__beneficio-titulo">Soporta hasta 300 kg</span><span class="info-compra__beneficio-sub">Fabricadas en polipropileno resistente</span></span></li>
+<li><span class="info-compra__beneficio-icono">🛡️</span><span>Reduce el esfuerzo en espalda, brazos y manos</span></li>
+<li><span class="info-compra__beneficio-icono">🏠</span><span>Ideales para refrigeradoras, lavadoras, colchones, sofás y muebles</span></li>
+<li><span class="info-compra__beneficio-icono">📦</span><span>Prácticas, resistentes y fáciles de guardar</span></li>
+</ul>
+
+        <div class="info-compra__incluye"><div class="info-compra__incluye-titulo">¿Qué incluye?</div><div class="info-compra__incluye-chips">
+<span class="chip-incluye">✅ 2 correas de transporte para hombros (2 personas)</span><span class="chip-incluye">✅ 2 correas de ajuste</span><span class="chip-incluye">✅ 2 guantes de protección</span></div></div>
+
+        <div class="alerta-stock">
+          <div class="alerta-stock__texto">
+            ⚠️ <span data-stock-texto>¡SOLO QUEDAN 26 UNIDADES!</span>
+          </div>
+          <div class="alerta-stock__barra-fondo">
+            <div class="alerta-stock__barra-relleno" data-stock-barra style="width: 80%;"></div>
+          </div>
+        </div>
+
+        <div class="info-compra__pills">
+          <span class="pill">🚚 Envío y Pago Contraentrega a todo el Perú</span>
+          <span class="pill pill--azul">💳 Pago al Recibir</span>
+        </div>
+
+        <div class="precio-actual-wrap"><span class="precio-actual">S/ 100.00</span><span class="pill pill--azul">Kit para 2 personas</span></div>
+
+        <!-- Opciones de cantidad -->
+        <div class="opciones-cantidad">
+<div class="opcion-cantidad seleccionada" data-cantidad="1"><span class="opcion-cantidad__radio"></span><div class="opcion-cantidad__info"><div class="opcion-cantidad__titulo">1 Kit (2 personas)</div><div class="opcion-cantidad__subtitulo">Precio regular</div></div><div class="opcion-cantidad__precios"><span class="opcion-cantidad__precio-final">S/ 100.00</span></div></div>
+<div class="opcion-cantidad" data-cantidad="2"><span class="opcion-cantidad__radio"></span><div class="opcion-cantidad__info"><span class="opcion-cantidad__badge">-10%</span><div class="opcion-cantidad__titulo">Lleva 2 kits: total S/ 180</div></div><div class="opcion-cantidad__precios"><span class="opcion-cantidad__precio-tachado">S/ 200.00</span><span class="opcion-cantidad__precio-final">S/ 90.00 c/u</span></div></div>
+<div class="opcion-cantidad" data-cantidad="3"><span class="opcion-cantidad__radio"></span><div class="opcion-cantidad__info"><span class="opcion-cantidad__badge">-20%</span><div class="opcion-cantidad__titulo">Lleva 3 kits: total S/ 240</div></div><div class="opcion-cantidad__precios"><span class="opcion-cantidad__precio-tachado">S/ 300.00</span><span class="opcion-cantidad__precio-final">S/ 80.00 c/u</span></div></div>
+</div>
+
+        <!-- CTA principal -->
+        <button class="btn-cta-principal" data-abrir-checkout>
+          🛒 PEDIR Y PAGAR AL RECIBIR
+          <span class="btn-cta-principal__sub">Envío y Pago Contraentrega</span>
+        </button>
+
+        <div class="mej-garantia"><div class="mej-garantia__sello"><span class="mej-garantia__sello-num">6</span><span class="mej-garantia__sello-txt">MESES DE<br />GARANTÍA</span></div>
+<div class="mej-garantia__info"><div class="mej-garantia__titulo">🛡️ Compra 100% protegida</div><ul class="mej-garantia__lista">
+<li>Garantía de 6 meses en tu kit</li><li>Pagas contra entrega: recién al recibir el producto</li><li>En provincia, por Shalom, sin adelanto</li></ul></div></div>
+
+<!-- ===== CONFIANZA: agencias de envío + métodos de pago (debajo del producto) ===== -->
+  <section class="franja-confianza franja-confianza--top">
+    <div class="contenedor">
+      <h3 class="seccion-titulo-centrado">ENVÍOS RÁPIDOS Y SEGUROS A TODO EL PERÚ</h3>
+
+      <!--
+        LOGOS DE COURIERS: dinsides.png, shalom.png, olva-courier.png, marvisur.png
+        Tamaño recomendado: 160x60 px cada uno (fondo transparente PNG)
+        Estos logos son de las empresas de courier; reemplázalos con
+        los logos reales otorgados por cada empresa o tus aliados logísticos.
+      -->
+      <div class="logos-fila">
+        <img src="assets/images/logo-courier-dinsides.png" alt="Dinsides Courier"  loading="lazy" />
+        <img src="assets/images/logo-courier-shalom.png" alt="Shalom"  loading="lazy" />
+        <img src="assets/images/logo-courier-olva.png" alt="Olva Courier"  loading="lazy" />
+        <img src="assets/images/logo-courier-marvisur.png" alt="Expreso Marvisur"  loading="lazy" />
+      </div>
+
+      <!--
+        LOGOS DE MÉTODOS DE PAGO: visa.png, mastercard.png, amex.png, yape.png,
+        plin.png, bcp.png, scotiabank.png, interbank.png, bbva.png
+        Tamaño recomendado: 100x40 px cada uno (fondo transparente PNG)
+        Puedes descargar los logos oficiales desde el sitio de marca de
+        cada entidad (la mayoría tiene "brand guidelines" públicas).
+      -->
+      <div class="logos-fila logos-fila--pagos">
+        <img src="assets/images/logo-pago-visa.png" alt="Visa"  loading="lazy" />
+        <img src="assets/images/logo-pago-mastercard.png" alt="Mastercard"  loading="lazy" />
+        <img src="assets/images/logo-pago-amex.png" alt="American Express"  loading="lazy" />
+        <img src="assets/images/logo-pago-yape.png" alt="Yape"  loading="lazy" />
+        <img src="assets/images/logo-pago-plin.png" alt="Plin"  loading="lazy" />
+        <img src="assets/images/logo-pago-bcp.png" alt="BCP"  loading="lazy" />
+        <img src="assets/images/logo-pago-scotiabank.png" alt="Scotiabank"  loading="lazy" />
+        <img src="assets/images/logo-pago-interbank.png" alt="Interbank"  loading="lazy" />
+        <img src="assets/images/logo-pago-bbva.png" alt="BBVA"  loading="lazy" />
+      </div>
+
+          </div>
+  </section>
+
+        <div class="tienda-lider">
+          <div class="tienda-lider__header">
+            <span>🏅</span>
+            <span class="tienda-lider__titulo">Tienda Líder Platinum</span>
+          </div>
+          <div class="tienda-lider__subtitulo">¡Uno de los mejores del sitio!</div>
+          <div class="tienda-lider__barra"></div>
+          <div class="tienda-lider__metricas">
+            <div>
+              <div class="tienda-lider__metrica-numero">3,240</div>
+              <div class="tienda-lider__metrica-texto">Ventas en los últimos 60 días</div>
+            </div>
+            <div>
+              <div class="tienda-lider__metrica-numero">👍</div>
+              <div class="tienda-lider__metrica-texto">Brindamos buen servicio</div>
+            </div>
+            <div>
+              <div class="tienda-lider__metrica-numero">📦</div>
+              <div class="tienda-lider__metrica-texto">Entregas rápidas y seguras</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    
+  </main>
+
+
+  <!-- ============================================================
+       PROBLEMA → SOLUCIÓN
+       ============================================================ -->
+  
+
+  <!-- ============================================================
+       SLIDER ANTES / DESPUÉS
+       Necesitás subir: assets/images/antes-ropa-amontonada.jpg
+                        assets/images/despues-tendedero.jpg
+       (mismo tamaño y ángulo las dos)
+       ============================================================ -->
+  <section class="mej-ba"><div class="contenedor">
+<h3 class="mej-titulo">Mueve un sofá sin sufrir</h3><p class="mej-subtitulo">Desliza la barra para ver el antes y el después 👉</p>
+<div class="ba" id="ba-slider"><img class="ba__img ba__img--despues" src="assets/images/despues-sofa.jpg" alt="Después: dos personas con correas de elevación suben un sofá" draggable="false" />
+<div class="ba__antes" id="ba-antes"><img class="ba__img" src="assets/images/antes-sofa.jpg" alt="Antes: dos personas cargando un sofá a pulso por la escalera" draggable="false" /></div>
+<div class="ba__divisor" id="ba-divisor"><div class="ba__tirador"><span class="ba__flecha">‹</span><span class="ba__flecha">›</span></div></div></div></div></section>
+
+  <!-- ============================================================
+       COMPARATIVA
+       ============================================================ -->
+  
+
+  <!-- ============================================================
+       ESPECIFICACIONES TÉCNICAS
+       ⚠️ EDITÁ los valores por los reales de tu producto.
+       ============================================================ -->
+  <section class="mej-medidas"><div class="contenedor">
+<h3 class="mej-titulo">Especificaciones del kit</h3><p class="mej-subtitulo">Todo lo que necesitas saber, de un vistazo.</p>
+<div class="spec-grid">
+<div class="spec"><span>🟠</span><strong>Naranja</strong><small>Color</small></div>
+<div class="spec"><span>↔️</span><strong>4,5 cm</strong><small>Ancho uniforme de la cinta</small></div>
+<div class="spec"><span>📏</span><strong>3 metros</strong><small>Longitud de la correa auxiliar</small></div>
+<div class="spec"><span>💪</span><strong>300 kg</strong><small>Capacidad de carga</small></div></div>
+<div class="incluye-box"><img src="assets/images/kit-incluye.jpg" alt="Kit de correas de elevación para 2 personas" loading="lazy" />
+<ul><li>✅ 2 correas de transporte para hombros (2 personas)</li><li>✅ 2 correas de ajuste</li><li>✅ 2 guantes de protección</li><li>⚙️ Polipropileno resistente</li></ul></div>
+</div></section>
+
+  <!-- ============================================================
+       FRANJA DE CONFIANZA: envíos, métodos de pago, clientes
+       ============================================================ -->
+  <section class="franja-confianza">
+    <div class="contenedor">
+<h3 class="seccion-titulo-centrado" style="margin-top: 40px;">ENVÍOS GARANTIZADOS A TODO EL PERÚ</h3>
+
+      <!--
+        FOTOS DE ENVÍOS/PAQUETES: envio-paquete-1.jpg a envio-paquete-8.jpg
+        Tamaño recomendado: 200x200 px cada una (cuadrada)
+        Formato: JPG, fotos de paquetes empacados, camiones de reparto,
+        o evidencia de despacho (las que ya usas para mostrar logística real).
+      -->
+      <div class="carrusel-social" data-carrusel data-dir="izquierda">
+        <div class="carrusel-social__track">
+        <img src="assets/images/envio-paquete-1.jpg" alt="Envío 1" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-2.jpg" alt="Envío 2" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-3.jpg" alt="Envío 3" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-4.jpg" alt="Envío 4" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-5.jpg" alt="Envío 5" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-6.jpg" alt="Envío 6" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-7.jpg" alt="Envío 7" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-8.jpg" alt="Envío 8" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-9.jpg" alt="Envío 9" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-10.jpg" alt="Envío 10" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-11.jpg" alt="Envío 11" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-12.jpg" alt="Envío 12" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-1.jpg" aria-hidden="true" alt="Envío 1" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-2.jpg" aria-hidden="true" alt="Envío 2" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-3.jpg" aria-hidden="true" alt="Envío 3" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-4.jpg" aria-hidden="true" alt="Envío 4" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-5.jpg" aria-hidden="true" alt="Envío 5" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-6.jpg" aria-hidden="true" alt="Envío 6" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-7.jpg" aria-hidden="true" alt="Envío 7" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-8.jpg" aria-hidden="true" alt="Envío 8" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-9.jpg" aria-hidden="true" alt="Envío 9" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-10.jpg" aria-hidden="true" alt="Envío 10" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-11.jpg" aria-hidden="true" alt="Envío 11" loading="lazy" draggable="false" />
+        <img src="assets/images/envio-paquete-12.jpg" aria-hidden="true" alt="Envío 12" loading="lazy" draggable="false" />
+        </div>
+      </div>
+
+      <div class="beneficios-finales">
+        <div>
+          <div style="font-size:22px;">🚚</div>
+          <div class="beneficio-final__titulo">ENVÍOS A TODO EL PERÚ</div>
+          <div class="beneficio-final__texto">Llegamos a tu ciudad</div>
+        </div>
+        <div>
+          <div style="font-size:22px;">💰</div>
+          <div class="beneficio-final__titulo">PAGO CONTRA ENTREGA</div>
+          <div class="beneficio-final__texto">Paga cuando recibes tu pedido</div>
+        </div>
+        <div>
+          <div style="font-size:22px;">🛡️</div>
+          <div class="beneficio-final__titulo">SEGURO Y CONFIABLE</div>
+          <div class="beneficio-final__texto">Tu compra está protegida</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER DE MINI-BENEFICIOS (franja final oscura)
+       ============================================================ -->
+  <!-- ============================================================
+       FAQ — PREGUNTAS FRECUENTES  (⚠️ editá según tu operación)
+       ============================================================ -->
+  <section class="mej-faq">
+    <div class="contenedor">
+      <h3 class="mej-titulo">Preguntas frecuentes</h3>
+      <div class="mej-faq__lista"><details class="mej-faq__item">
+          <summary>¿Cómo pago? ¿Es seguro?</summary>
+          <div class="mej-faq__resp">Pagas <strong>contra entrega</strong>: recién abonas cuando recibes el producto en tu casa si es en lima o para provincia en la agencia al momento del recojo. No pagas nada por adelantado.</div>
+        </details><details class="mej-faq__item">
+          <summary>¿Cuánto demora el envío?</summary>
+          <div class="mej-faq__resp">En Lima te llega el mismo dia o al dia siguiente de haber realizado tu pedido. A provincia, entre 2 y 3 días hábiles vía Shalom. Te pasamos el seguimiento por WhatsApp.</div>
+        </details><details class="mej-faq__item">
+          <summary>¿Que medios de pago aceptan? ¿Es seguro?</summary>
+          <div class="mej-faq__resp">Utilizamos <strong>todos los medios de pago</strong>: Yape, Plin, Transferencia(BCP, INTERBANK, BBVA, TODOS LOS BANCOS), Tarjeta de credito con IZIPAY.</div>
+        </details><details class="mej-faq__item">
+          <summary>¿El envío tiene costo?</summary>
+          <div class="mej-faq__resp">El envío es <strong>gratis a todo el Perú</strong>.</div>
+        </details><details class="mej-faq__item"><summary>¿Cómo se usan?</summary><div class="mej-faq__resp">Te pones el arnés, ajustas la longitud de las correas, las cruzas por debajo del objeto y lo levantan entre dos personas. Incluye 2 correas de ajuste y 2 guantes de protección.</div></details><details class="mej-faq__item"><summary>¿Cuánto peso aguantan?</summary><div class="mej-faq__resp">Hasta <strong>300 kg</strong>.</div></details><details class="mej-faq__item"><summary>¿Qué incluye el kit?</summary><div class="mej-faq__resp">2 correas de transporte para hombros (para 2 personas), 2 correas de ajuste y 2 guantes de protección. Medidas: cinta de 4,5 cm de ancho y correa auxiliar de 3 metros.</div></details><details class="mej-faq__item"><summary>¿Tiene garantía?</summary><div class="mej-faq__resp">Sí, <strong>garantía de 6 meses</strong>.</div></details><details class="mej-faq__item"><summary>¿Qué puedo mover con las correas?</summary><div class="mej-faq__resp">Refrigeradoras, lavadoras, colchones, sofás y muebles en general.</div></details></div></div></section>
+
+  <footer class="mini-beneficios-footer">
+    <div class="contenedor">
+      <div>
+        <div class="mini-beneficios-footer__item-titulo">🚚 ENVÍOS RÁPIDOS A TODO EL PERÚ</div>
+        <div class="mini-beneficios-footer__item-texto">A todo el Perú incluso provincia</div>
+      </div>
+      <div>
+        <div class="mini-beneficios-footer__item-titulo">💰 PAGO CONTRA ENTREGA</div>
+        <div class="mini-beneficios-footer__item-texto">Paga al recibir tu pedido</div>
+      </div>
+      <div>
+        <div class="mini-beneficios-footer__item-titulo">🛡️ GARANTÍA DE 6 MESES</div>
+        <div class="mini-beneficios-footer__item-texto">Compra con respaldo</div>
+      </div>
+      <div>
+        <div class="mini-beneficios-footer__item-titulo">🎧 ATENCIÓN PERSONALIZADA</div>
+        <div class="mini-beneficios-footer__item-texto">Te ayudamos por WhatsApp</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="espaciador-barra-fija"></div>
+
+  <!-- ============================================================
+       BARRA FIJA INFERIOR (aparece al hacer scroll)
+       ============================================================ -->
+  <div class="barra-fija-inferior" id="barra-fija-inferior">
+    <div class="contenedor">
+      <div class="barra-fija-inferior__producto">
+        <img src="assets/images/miniatura-1-logo.jpg" alt="Correas de Elevación para Mudanza"  loading="lazy" />
+        <div>
+          <div class="barra-fija-inferior__nombre" id="barra-fija-nombre">Correas de Elevación para Mudanza</div>
+          <div class="barra-fija-inferior__precio">
+            <strong id="barra-fija-precio">S/ 100.00</strong><span class="badge-descuento" id="barra-fija-badge" style="display:none;">-10%</span>
+          </div>
+        </div>
+      </div>
+      <span class="barra-fija-inferior__stock">🔥 <span data-stock-numero>12</span> unidades</span>
+      <button class="barra-fija-inferior__cta" data-abrir-checkout>
+        PEDIR Y PAGAR AL RECIBIR
+        <span>Envío y Pago Contraentrega</span>
+      </button>
+    </div>
+  </div>
+  <!-- ============================================================
+       MODAL DE CHECKOUT (Lima / Provincia)
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-envio-overlay"><div class="modal-checkout envio-modal" role="dialog" aria-modal="true">
+<button class="modal-checkout__cerrar" data-cerrar-checkout aria-label="Cerrar">✕</button>
+<div class="envio-modal__titulo">¿Dónde recibes tu pedido?</div><div class="envio-modal__sub">Elige una opción para pedirte los datos correctos</div>
+<button type="button" class="envio-card" data-elegir-envio="lima"><span class="envio-card__ico">🏠</span><span><strong>Lima</strong><small>Entrega a domicilio</small></span></button>
+<button type="button" class="envio-card" data-elegir-envio="provincia"><span class="envio-card__ico">🚚</span><span><strong>Provincia</strong><small>Envío por Shalom</small></span></button>
+</div></div>
+
+  <div class="modal-overlay" id="modal-checkout-overlay">
+    <div class="modal-checkout" role="dialog" aria-modal="true" aria-labelledby="modal-checkout-titulo">
+      <button class="modal-checkout__cerrar" data-cerrar-checkout aria-label="Cerrar formulario">✕</button>
+
+      <!-- ---- Formulario ---- -->
+      <div id="modal-checkout-formulario">
+        <div class="modal-checkout__header">
+          <span class="modal-checkout__header-icono">✅</span>
+          <div>
+            <div class="modal-checkout__titulo" id="modal-checkout-titulo">Completa tus datos</div>
+            <div class="modal-checkout__subtitulo">Paga al recibir tu pedido</div>
+          </div>
+        </div>
+
+        <div class="modal-checkout__grid">
+          <!-- Columna izquierda: formulario -->
+          <div>
+            <div class="envio-elegido"><span id="envio-elegido-texto"></span><button type="button" id="btn-cambiar-envio">Cambiar</button></div>
+
+            <div class="modal-paso">
+              <span class="modal-paso__numero">1</span>
+              <span id="modal-checkout-titulo-paso2">Ingresa tus datos de entrega</span>
+            </div>
+
+            <!-- ===== Campos: ENVÍO A LIMA ===== -->
+            <div data-seccion-envio="lima" class="activa">
+              <div class="campo">
+                <label for="campo-nombre-lima">Nombre completo</label>
+                <input type="text" id="campo-nombre-lima" placeholder="Ej: Juan Pérez" />
+                <span class="campo__error-texto" data-error-de="campo-nombre-lima"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-whatsapp-lima">WhatsApp</label>
+                <input type="tel" id="campo-whatsapp-lima" placeholder="Ej: 912 345 678" />
+                <span class="campo__error-texto" data-error-de="campo-whatsapp-lima"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-distrito">Distrito</label>
+                <select id="campo-distrito"><option value="">Selecciona tu distrito</option><option>Ancón</option><option>Ate</option><option>Barranco</option><option>Breña</option><option>Carabayllo</option><option>Chaclacayo</option><option>Chorrillos</option><option>Cieneguilla</option><option>Comas</option><option>El Agustino</option><option>Independencia</option><option>Jesús María</option><option>La Molina</option><option>La Victoria</option><option>Lima (Cercado)</option><option>Lince</option><option>Los Olivos</option><option>Lurigancho-Chosica</option><option>Lurín</option><option>Magdalena del Mar</option><option>Miraflores</option><option>Pachacámac</option><option>Pucusana</option><option>Pueblo Libre</option><option>Puente Piedra</option><option>Punta Hermosa</option><option>Punta Negra</option><option>Rímac</option><option>San Bartolo</option><option>San Borja</option><option>San Isidro</option><option>San Juan de Lurigancho</option><option>San Juan de Miraflores</option><option>San Luis</option><option>San Martín de Porres</option><option>San Miguel</option><option>Santa Anita</option><option>Santa María del Mar</option><option>Santa Rosa</option><option>Santiago de Surco</option><option>Surquillo</option><option>Villa El Salvador</option><option>Villa María del Triunfo</option><option>Callao</option><option>Bellavista</option><option>Carmen de la Legua Reynoso</option><option>La Perla</option><option>La Punta</option><option>Mi Perú</option><option>Ventanilla</option></select><span class="campo__ayuda">Solo Lima Metropolitana y Callao. Si estás en otra ciudad, toca "Cambiar" arriba y elige Provincia.</span>
+                <span class="campo__error-texto" data-error-de="campo-distrito"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-direccion">Dirección exacta</label>
+                <input type="text" id="campo-direccion" placeholder="Ej: Av. Los Próceres 123, Urb. Los Jardines" />
+                <span class="campo__error-texto" data-error-de="campo-direccion"></span>
+
+                <!-- Mapa de ubicación de entrega (opcional pero recomendado) -->
+                <div class="mapa-entrega">
+                  <div class="mapa-entrega__barra">
+                    <input type="text" id="mapa-buscar" class="mapa-entrega__buscar"
+                           placeholder="🔎 Buscá tu calle o distrito (ej: Risso, Lince)" />
+                    <button type="button" id="mapa-btn-buscar" class="mapa-entrega__btn-buscar">Buscar</button>
+                  </div>
+                  <ul id="mapa-resultados" class="mapa-entrega__resultados" style="display:none;"></ul>
+                  <div id="mapa-leaflet" class="mapa-entrega__mapa"></div>
+                  <div class="mapa-entrega__pie">
+                    <button type="button" id="btn-ubicacion-gps" class="mapa-entrega__gps">
+                      📍 Mi ubicación actual
+                    </button>
+                    <button type="button" id="btn-confirmar-ubicacion" class="mapa-entrega__confirmar">
+                      ✓ Confirmar ubicación
+                    </button>
+                  </div>
+                  <div id="mapa-estado" class="mapa-entrega__estado">📍 Arrastrá el pin justo a tu puerta y tocá Confirmar</div>
+                </div>
+                <span class="campo__ayuda">1) Buscá tu calle o distrito para acercarte. 2) Arrastrá el pin al número exacto de tu puerta. El número de casa lo escribís arriba en “Dirección exacta”.</span>
+              </div>
+
+              
+            </div>
+
+            <!-- ===== Campos: ENVÍO A PROVINCIA ===== -->
+            <div data-seccion-envio="provincia">
+              <div class="campo">
+                <label for="campo-nombre-provincia">Nombre completo</label>
+                <input type="text" id="campo-nombre-provincia" placeholder="Ej: Juan Pérez" />
+                <span class="campo__error-texto" data-error-de="campo-nombre-provincia"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-dni">DNI</label>
+                <input type="text" id="campo-dni" placeholder="Ej: 12345678" inputmode="numeric" maxlength="8" />
+                <span class="campo__error-texto" data-error-de="campo-dni"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-whatsapp-provincia">WhatsApp</label>
+                <input type="tel" id="campo-whatsapp-provincia" placeholder="Ej: 912 345 678" />
+                <span class="campo__error-texto" data-error-de="campo-whatsapp-provincia"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-departamento">Departamento</label>
+                <select id="campo-departamento">
+                  <option value="">Ej: Arequipa</option>
+                  <option>Amazonas</option>
+                  <option>Áncash</option>
+                  <option>Apurímac</option>
+                  <option>Arequipa</option>
+                  <option>Ayacucho</option>
+                  <option>Cajamarca</option>
+                  <option>Cusco</option>
+                  <option>Huancavelica</option>
+                  <option>Huánuco</option>
+                  <option>Ica</option>
+                  <option>Junín</option>
+                  <option>La Libertad</option>
+                  <option>Lambayeque</option>
+                  <option>Loreto</option>
+                  <option>Madre de Dios</option>
+                  <option>Moquegua</option>
+                  <option>Pasco</option>
+                  <option>Piura</option>
+                  <option>Puno</option>
+                  <option>San Martín</option>
+                  <option>Tacna</option>
+                  <option>Tumbes</option>
+                  <option>Ucayali</option>
+                </select>
+                <span class="campo__error-texto" data-error-de="campo-departamento"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-ciudad-destino">Ciudad / Destino</label>
+                <input type="text" id="campo-ciudad-destino" placeholder="Ej: Arequipa, Cusco, Trujillo" />
+                <span class="campo__error-texto" data-error-de="campo-ciudad-destino"></span>
+              </div>
+              <div class="campo">
+                <label for="campo-sede-shalom">Sede de Shalom más cercana a tu domicilio</label>
+                <input type="text" id="campo-sede-shalom" placeholder="Ej: Shalom Arequipa, Shalom Cusco, Shalom Trujillo" />
+                <span class="campo__error-texto" data-error-de="campo-sede-shalom"></span>
+              </div>
+
+              <div class="aviso-shalom">
+                <span class="aviso-shalom__icono">ℹ️</span>
+                <div>
+                  <div class="aviso-shalom__titulo">Tu pedido será enviado por Shalom.</div>
+                  <div class="aviso-shalom__texto">Pagas contra entrega al recibir en la agencia Shalom. No pedimos adelanto.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna derecha: resumen -->
+          <div class="resumen-pedido">
+            <!--
+              IMAGEN: producto-resumen-checkout.jpg
+              Tamaño recomendado: 400x300 px (relación 4:3)
+              Puede ser la misma imagen del hero, recortada a 4:3,
+              optimizada para verse pequeña dentro del resumen.
+            -->
+            <img src="assets/images/producto-hero-principal.jpg" alt="Correas de Elevación para Mudanza" class="resumen-pedido__producto-img"  loading="lazy" />
+            <div class="resumen-pedido__nombre" id="resumen-producto-nombre">Correas de Elevación para Mudanza</div>
+            <div class="resumen-pedido__precio" id="resumen-producto-precio-unitario">S/ 100.00</div>
+
+            <div class="resumen-pedido__titulo">Resumen de tu pedido</div>
+            <div class="resumen-pedido__linea">
+              <span id="resumen-linea-producto-cantidad">Correas de Elevación para Mudanza (1 unidad)</span>
+              <span id="resumen-linea-producto-precio">S/ 89.00</span>
+            </div>
+            
+            
+            <div class="resumen-pedido__linea">
+              <span>Envío</span>
+              <span id="resumen-linea-envio-texto">Gratis</span>
+            </div>
+
+            <div class="resumen-pedido__total">
+              <span class="resumen-pedido__total-label">Total a pagar</span>
+              <span class="resumen-pedido__total-valor" id="resumen-total-valor">S/ 89.00</span>
+            </div>
+
+            <div class="resumen-pedido__garantias">
+              <div class="resumen-pedido__garantia">
+                <span class="resumen-pedido__garantia-icono">💳</span>
+                <div>
+                  <span class="resumen-pedido__garantia-titulo">Pago contra entrega</span>
+                  <span class="resumen-pedido__garantia-texto">Paga cuando recibas tu pedido</span>
+                </div>
+              </div>
+              <div class="resumen-pedido__garantia">
+                <span class="resumen-pedido__garantia-icono">🚚</span>
+                <div>
+                  <span class="resumen-pedido__garantia-titulo">Envío gratis a todo el Perú</span>
+                  <span class="resumen-pedido__garantia-texto">Rápido y seguro, sin costo extra</span>
+                </div>
+              </div>
+              <div class="resumen-pedido__garantia">
+                <span class="resumen-pedido__garantia-icono">✅</span>
+                <div>
+                  <span class="resumen-pedido__garantia-titulo">Garantía de 6 meses</span>
+                  <span class="resumen-pedido__garantia-texto">Compra con respaldo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-confirmar-pedido" id="btn-confirmar-pedido">
+          <span>✅ ENVIAR PEDIDO POR WHATSAPP</span>
+          <span class="btn-confirmar-pedido__sub">Se abrirá WhatsApp con tu pedido listo para enviar</span>
+        </button>
+
+        <div class="modal-checkout__privacidad">
+          🔒 Tus datos están 100% seguros y protegidos.
+        </div>
+      </div>
+
+      <!-- ---- Pantalla de éxito ---- -->
+      <div class="modal-checkout__exito" id="modal-checkout-exito">
+        <div class="modal-checkout__exito-icono">✓</div>
+        <div class="modal-checkout__exito-titulo">¡Pedido listo!</div>
+        <div class="modal-checkout__exito-texto">Te estamos llevando a WhatsApp para que envíes tu pedido. Si no se abre solo, toca el botón.</div>
+        <a id="exito-abrir-whatsapp" class="modal-checkout__exito-cerrar" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <button type="button" class="modal-checkout__exito-cerrar" data-cerrar-checkout>Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <!-- Librería oficial de Supabase (CDN) -->
+
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/pixels.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/checkout-modal.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/antes-despues.js"></script>
+  <script src="js/carrusel-clientes.js"></script>
+</body>
+</html>
